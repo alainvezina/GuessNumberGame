@@ -7,18 +7,18 @@ namespace server.Models
 {
     public class AttemptResult
     {
-        public AttemptResult(string password, bool success = false)
+        public AttemptResult(string input, bool success = false)
         {
 
             this.Id = Guid.NewGuid();
             this.Success = success;
-            this.Password = password;
+            this.Input = input;
             this.AttemptDateTime = DateTime.Now;
         }
         public Guid Id { get; set; }
         public bool Success { get; set; }
-        public string Password { get; set; }
-
+        public string Input { get; set; }
         public DateTime AttemptDateTime { get; set; }
+        public string[] Details { get; set; }
     }
 }

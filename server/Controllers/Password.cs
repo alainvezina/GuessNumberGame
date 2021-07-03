@@ -7,30 +7,30 @@ using Microsoft.AspNetCore.Mvc;
 using server.Models;
 namespace server.Controllers
 {
-    #region TodoController
+
     [Route("")]
     [ApiController]
+    [Produces("application/json")]
     public class PasswordController : ControllerBase
     {
-
         public PasswordController()
         {
 
         }
-        #endregion
 
-     
-
- 
         [Route("")]
-        [Route("{password}")]
-        public async Task<ActionResult<AttemptResult>> Trial(string password)
+        [Route("{input}")]
+        public async Task<ActionResult<AttemptResult>> Validate(string input)
         {
-            string currentPassword = DateTime.Now.ToString("yyyyMMdd");
+            return await Task.FromResult(new PasswordChecker().Validate(input));
+        }
 
-
-            return new AttemptResult(password, password == currentPassword);
-
+        [Route("cheat")]
+        [HttpGet]
+        public async Task<ActionResult<string>> Cheat()
+        {
+            string currentPassword = new PasswordChecker().Secret;
+            return await Task.FromResult($"Well not everyone is smart enough, but keep trying.  Here the current password : {currentPassword}");
         }
 
     }

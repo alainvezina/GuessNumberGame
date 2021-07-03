@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 namespace server
 {
     public class Startup
@@ -19,8 +19,8 @@ namespace server
 
         public void ConfigureServices(IServiceCollection services)
         {
-    
-            services.AddControllers();
+            services.AddControllers()
+                .AddNewtonsoftJson();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -34,19 +34,12 @@ namespace server
             app.UseRouting();
 
             app.UseAuthorization();
-            /*
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-            */
-            app.UseEndpoints(endpoints =>
-            {
-       
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Password}/{action:Index}");
-            });
+
         }
     }
 }

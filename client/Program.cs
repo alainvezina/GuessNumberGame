@@ -1,12 +1,29 @@
 ﻿using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace client
 {
     class Program
     {
-        static void Main(string[] args)
+        private static readonly HttpClient client = new HttpClient();
+
+        public Program()
         {
-            Console.WriteLine("Hello World!");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.BaseAddress = new Uri("https://localhost:5001");
+        }
+
+        static async Task Main(string[] args)
+        {
+            //Call example 
+
+            for (int i = 0; i <= 100; i++)
+            {
+                var message = await client.GetStringAsync($"https://localhost:5001/{i}");
+            }
+
+            Console.ReadKey();
         }
     }
 }
