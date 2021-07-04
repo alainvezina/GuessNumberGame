@@ -1,11 +1,10 @@
-﻿#region snippet_all
-// Unused usings removed
+﻿
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
+
 namespace server
 {
     public class Startup
@@ -43,4 +42,3 @@ namespace server
         }
     }
 }
-#endregion
