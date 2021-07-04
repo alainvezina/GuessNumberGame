@@ -8,18 +8,26 @@ namespace client
 {
     class Program
     {
-        private static readonly HttpClient client = new HttpClient();
-        public Program()
+        private static HttpClient client;
+
+        private static void GenerateClient()
         {
+            client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Clear();
             client.BaseAddress = new Uri("https://localhost:5001");
         }
+
         static async Task Main(string[] args)
         {
+            if (client == null)
+                GenerateClient();
+
+            await client.GetStringAsync("reset");
+
             for (int i = 0; i <= 100; i++)
             {
-                var response = await client.GetFromJsonAsync<AttemptResult>($"https://localhost:5001/{i}");
-
+                var response = await client.GetFromJsonAsync<AttemptResult>(i.ToString());
+                
                 if (response.AmIright)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;

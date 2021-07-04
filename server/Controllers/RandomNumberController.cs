@@ -36,5 +36,13 @@ namespace server.Controllers
             return await Task.FromResult(result);
         }
 
+        [Route("reset")]
+        [HttpGet]
+        public IActionResult Reset()
+        {
+            _randomNumber = new RandomNumber();
+            return Ok();
+        }
+
     }
 }
