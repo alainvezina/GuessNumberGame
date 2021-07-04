@@ -37,7 +37,7 @@ namespace client
                 if (response.AmIright)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"Attempt #{response.NumberOfAttempts} with number {response.Input} was sucessfull");
+                    Console.WriteLine($"Attempt #{response.NumberOfAttempts} with number {response.Input} was sucessfull.");
                     Console.ResetColor();
                     break;
                 }
@@ -66,7 +66,7 @@ namespace client
                 if (response.AmIright)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"Attempt #{response.NumberOfAttempts} with number {response.Input} was sucessfull");
+                    Console.WriteLine($"Attempt #{response.NumberOfAttempts} with number {response.Input} was sucessfull.");
                     Console.ResetColor();
                     break;
                 }
